@@ -18,7 +18,7 @@ class StoreEventRequest extends FormRequest
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'date' => 'required|date|after:today',
-            'availability' => 'required|integer|min:0'
+            'availability' => 'required|integer|min:1'
         ];
     }
 
@@ -26,7 +26,7 @@ class StoreEventRequest extends FormRequest
     {
         return [
             'date.after' => 'Event date must be in the future',
-            'availability.min' => 'Total tickets cannot be negative'
+            'availability.min' => 'Total tickets cannot be negative or zero'
         ];
     }
 }

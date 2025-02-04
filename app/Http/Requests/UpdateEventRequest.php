@@ -17,7 +17,7 @@ class UpdateEventRequest extends FormRequest
             'name' => 'sometimes|required|string|max:255',
             'description' => 'sometimes|required|string',
             'date' => 'sometimes|required|date|after:today',
-            'availability' => 'sometimes|required|integer|min:0'
+            'availability' => 'sometimes|required|integer|min:1'
         ];
     }
 
@@ -25,7 +25,7 @@ class UpdateEventRequest extends FormRequest
     {
         return [
             'date.after' => 'Event date must be in the future',
-            'availability.min' => 'Total tickets cannot be negative'
+            'availability.min' => 'Total tickets cannot be negative or zero'
         ];
     }
 }
