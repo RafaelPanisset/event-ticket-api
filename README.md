@@ -47,6 +47,8 @@ docker-compose exec app php artisan db:seed
 ### API Access
 The API will be available at `http://localhost:8000/`
 
+Obs: If you need to change the port where the API runs, update the `APP_PORT` variable in the `.env` file.
+
 ### Testing
 Run the tests:
 ```bash
