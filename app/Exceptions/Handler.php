@@ -8,6 +8,8 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
+
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -44,6 +46,13 @@ class Handler extends ExceptionHandler
                 ], 404);
             }
 
+            if ($exception instanceof TooManyRequestsHttpException) {
+                return response()->json([
+                    'error'   => 'Too Many Requests',
+                    'message' => $exception->getMessage() ?: 'You have exceeded the rate limit.',
+                ], 429);
+            }
+            
             if ($exception instanceof NotEnoughTicketsException ||
             $exception instanceof PastEventReservationException ||
             $exception instanceof ReservationAlreadyExistsException ||

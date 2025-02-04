@@ -4,11 +4,17 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
-Route::apiResource('events', EventController::class);
+// this is to avoid ddos attack
+Route::middleware('throttle:20,1')->group(function () {
 
-Route::post('events/{event}/reserve', [ReservationController::class, 'reserve']);
-Route::put('events/{event}/reserve', [ReservationController::class, 'update']);
-Route::delete('events/{event}/reserve', [ReservationController::class, 'cancel']);
+
+  Route::apiResource('events', EventController::class);
+
+  Route::post('events/{event}/reserve', [ReservationController::class, 'reserve']);
+  Route::put('events/{event}/reserve', [ReservationController::class, 'update']);
+  Route::delete('events/{event}/reserve', [ReservationController::class, 'cancel']);
+
+});
 
 /**
  * 
