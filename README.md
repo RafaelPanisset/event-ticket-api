@@ -193,7 +193,7 @@ Deletes a specific event.
 
 **Possible improviments for the events requests**
 
-I haven’t implemented it, but I believe adding a new column to the events table to track the initial total number of tickets available would be beneficial. Also, I’m currently retrieving all events at once, which could become costly and slow if the table grows too large. To address this, I wold also add pagination. I also added transactions and locking when updating or deleting events. This basically stops users from making reservations while the ticket numbers are being changed or while an event is being deleted.
+I haven’t implemented it, but I believe adding a new column to the events table to track the initial total number of tickets available would be beneficial. Also, I’m currently retrieving all events at once, which could become costly and slow if the table grows too large. To address this, I would also add pagination. I also added transactions and locking when updating or deleting events. This basically stops users from making reservations while the ticket numbers are being changed or while an event is being deleted.
 
 ### Reservations
 
