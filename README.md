@@ -55,7 +55,7 @@ Run the tests:
 docker-compose exec app php artisan test
 ```
 ### Important Note: 
-Running the tests will refresh the database, which means all existing data in the database will be deleted. As a future improvement, I'd add a separate testing database by creating an `env.test` file and configuring a distinct database connection for testing. If you run the test, you'll need to run the `seed` again.
+Running the tests will refresh the database, which means all existing data in the database will be deleted. As a future improvement, I'd add a separate testing database by creating an `env.test` file and configuring a distinct database connection for testing. If you run the test, you'll need to run the `seeder` again.
 
 ## Headers
 All requests must include the following headers:
@@ -191,7 +191,7 @@ Deletes a specific event.
 #### Response
 - Success: Empty response with status code 204
 
-**Decisions and possible improviments for the events requests**
+**Possible improviments for the events requests**
 
 I haven’t implemented it, but I believe adding a new column to the events table to track the initial total number of tickets available would be beneficial. Also, I’m currently retrieving all events at once, which could become costly and slow if the table grows too large. To address this, I wold also add pagination. I also added transactions and locking when updating or deleting events. This basically stops users from making reservations while the ticket numbers are being changed or while an event is being deleted.
 
@@ -264,3 +264,7 @@ Updates an existing reservation.
     "message": "Reservation cancelled"
 }
 ```
+
+**Possible improviments for the events requests**
+
+Currently, when a user cancels a reservation, I’m deleting it from the database. However, in a production environment, I would add a column called, for example, 'canceled', which would store either true or false. By default, it would be set to false, and if the user cancels, I would change it to true. I believe keeping track of all reservations(even canceled ones) could be important for future analysis.
