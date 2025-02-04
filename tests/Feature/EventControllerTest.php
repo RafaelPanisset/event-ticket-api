@@ -31,6 +31,21 @@ class EventControllerTest extends TestCase
             ]);
     }
 
+    public function test_too_many_requests_error()
+    {
+        $maxAttempts = 20; 
+        
+        for ($i = 0; $i < $maxAttempts + 1; $i++) {
+            $response = $this->getJson('/api/events');
+        }
+
+        $response->assertStatus(429)
+            ->assertJson([
+                'error' => 'Too Many Requests',
+                'message' => 'Too Many Attempts.'
+            ]);
+    }
+
     public function test_can_create_new_event()
     {
         $eventData = [
