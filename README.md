@@ -54,6 +54,8 @@ Run the tests:
 ```bash
 docker-compose exec app php artisan test
 ```
+### Important Note: 
+Running the tests will refresh the database, which means all existing data in the database will be deleted. As a future improvement, I'd add a separate testing database by creating an `env.test` file and configuring a distinct database connection for testing. If you run the test, you'll need to run the `seed` again.
 
 ## Headers
 All requests must include the following headers:
