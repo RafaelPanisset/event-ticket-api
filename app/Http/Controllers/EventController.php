@@ -25,7 +25,6 @@ class EventController extends Controller
             $query->where('availability', '>', 0);
         }
     
-        $query->orderBy('date');
         $events = $query->get();
         // $events = $query->paginate($request->input('per_page', 15));
     
