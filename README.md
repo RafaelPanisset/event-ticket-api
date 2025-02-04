@@ -265,6 +265,6 @@ Updates an existing reservation.
 }
 ```
 
-**Possible improviments for the events requests**
+**Possible improviments for the reservation requests**
 
 Currently, when a user cancels a reservation, I’m deleting it from the database. However, in a production environment, I would add a column called, for example, 'canceled', which would store either true or false. By default, it would be set to false, and if the user cancels, I would change it to true. I believe keeping track of all reservations(even canceled ones) could be important for future analysis.
