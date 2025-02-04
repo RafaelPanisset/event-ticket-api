@@ -25,7 +25,9 @@ class UpdateReservationRequest extends FormRequest
     {
         return [
             'tickets_count.min' => 'You must reserve at least one ticket',
-            'customer_email.required' => 'Please provide your email address'
+            'customer_email.required' => 'Please provide your email address',
+            'customer_email.email' => 'Please provide a valid email address',
+
 
         ];
     }

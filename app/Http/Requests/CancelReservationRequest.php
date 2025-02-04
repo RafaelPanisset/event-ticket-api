@@ -21,7 +21,8 @@ class CancelReservationRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'customer_email.required' => 'Please provide your email address'
+            'customer_email.required' => 'Please provide your email address',
+            'customer_email.email' => 'Please provide a valid email address',
         ];
     }
 }
