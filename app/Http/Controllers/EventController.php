@@ -26,7 +26,6 @@ class EventController extends Controller
         }
     
         $events = $query->get();
-        // $events = $query->paginate($request->input('per_page', 15));
     
         return EventResource::collection($events);
     }
