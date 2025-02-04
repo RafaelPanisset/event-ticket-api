@@ -16,7 +16,8 @@ class StoreReservationRequest extends FormRequest
         return [
             'customer_email' => 'required|email',
             'customer_name' => 'required|string|max:255',
-            'tickets_count' => 'required|integer|min:1'
+            'tickets_count' => 'required|integer|min:1',
+            'tickets_count' => 'required|integer|max:15'
         ];
     }
 

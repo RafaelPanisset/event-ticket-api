@@ -15,7 +15,9 @@ class UpdateReservationRequest extends FormRequest
     {
         return [
             'customer_email' => 'required|email',
-            'tickets_count' => 'required|integer|min:1'
+            'tickets_count' => 'required|integer|min:1',
+            'tickets_count' => 'required|integer|max:15'
+
         ];
     }
 
