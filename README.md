@@ -173,7 +173,6 @@ Updates a specific event.
 **Response Example:**
 ```json
 {
-    "id": 6,
     "name": "Rock in Rio",
     "description": "One of the biggest music festivals in the world",
     "date": "2028-07-19 00:00:00",
